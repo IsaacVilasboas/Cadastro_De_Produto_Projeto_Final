@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-1">Bem-vindo!</h1>
+    <h2 class="display-4">Sistema de Cadastro de Produtos</h2>
+    <p class="lead">Uma solução eficiente para gerenciar e cadastrar seus produtos de forma simples e organizada.</p>
+    <p>Facilite o controle de cadastro, a atualização de informações e a busca por produtos.</p>
+    <p>Experimente a praticidade e agilidade que nosso sistema oferece.</p>
+
+    <div class="mt-4">
+        <a class="btn btn-success btn-lg" asp-controller="Produto" asp-action="Index" role="button">Ver Produtos Cadastrados</a>
+        <a class="btn btn-primary btn-lg" asp-controller="Produto" asp-action="Criar" role="button">Cadastrar Novo Produto</a>
+        <a class="btn btn-secondary btn-lg" asp-controller="Produto" asp-action="Sobre" role="button">Sobre o Sistema</a>
+    </div>
+</div>

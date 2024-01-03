@@ -1,0 +1,96 @@
+﻿@model Produto
+@{
+    ViewData["Title"] = "Adicionar Produtos";
+}
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4">Adicionar Produto</h1>
+    </div>
+
+    <form asp-controller="Produto" asp-action="Criar" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="categoria" class="form-label">Categoria:</label>
+                    <input type="text" asp-for="Categoria" class="form-control" placeholder="Digite a categoria">
+                    @Html.ValidationMessageFor(x => x.Categoria)
+                </div>
+
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Produto:</label>
+                    <input type="text" asp-for="NomeProduto" class="form-control" placeholder="Nome do Produto">
+                    @Html.ValidationMessageFor(x => x.NomeProduto)
+                </div>
+
+                <div class="mb-3">
+                    <label for="sabor" class="form-label">Sabor:</label>
+                    <input type="text" asp-for="Sabor" class="form-control" placeholder="Sabor do Produto">
+                </div>
+
+                <div class="mb-3">
+                    <label for="tipo" class="form-label">Tipo:</label>
+                    <input type="text" asp-for="Tipo" class="form-control" placeholder="Tipo do Produto">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="recipiente" class="form-label">Recipiente:</label>
+                    <input type="text" asp-for="Recipiente" class="form-control" placeholder="Modelo do Recipiente">
+                </div>
+
+                <div class="mb-3">
+                    <label for="peso" class="form-label">Peso:</label>
+                    <input type="text" asp-for="Peso" class="form-control" placeholder="Digite o Peso do produto">
+                </div>
+
+                <div class="mb-3">
+                    <label for="quantidade" class="form-label">Quantidade:</label>
+                    <input type="text" asp-for="Qtd" class="form-control" placeholder="Digite a quantidade">
+                </div>
+
+                <div class="mb-3">
+                    <label for="preco" class="form-label">Preço:</label>
+                    <div class="input-group">
+                        <span class="input-group-text">R$</span>
+                        <input type="text" asp-for="Preco" id="precoInput" class="form-control" placeholder="Digite o Preço">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="fornecedor" class="form-label">Fornecedor:</label>
+                    <input type="text" asp-for="NomeFornecedor" class="form-control" placeholder="Nome do Fornecedor">
+                    @Html.ValidationMessageFor(x => x.NomeFornecedor)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="codigo-barra" class="form-label">Código-Barra:</label>
+                    <input type="text" asp-for="CodBarra" class="form-control" placeholder="Digite o Código de Barra">
+                    @Html.ValidationMessageFor(x => x.CodBarra)
+                </div>
+
+                <div class="mb-3">
+                    <label for="dataCadastro" class="form-label">Data de Cadastro:</label>
+                    <input type="date" asp-for="DataCadastro" class="form-control" placeholder="dd/mm/yyyy" data-val-date="Digite a data de cadastro">
+                    @Html.ValidationMessageFor(x => x.DataCadastro)
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <a class="btn btn-secondary btn-block" asp-controller="Produto" asp-action="Index" role="button">Voltar</a>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary btn-block" type="submit">Adicionar</button>
+            </div>
+        </div>
+    </form>
+</div>

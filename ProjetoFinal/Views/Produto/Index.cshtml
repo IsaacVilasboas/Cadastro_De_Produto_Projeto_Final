@@ -1,0 +1,75 @@
+﻿@model List<Produto>
+@{
+    ViewData["Title"] = "Listagem de produtos";
+}
+
+
+<div class="text-center">
+
+    <div class="d-grid gap-2 d-md-flex justity-content-md-start">
+        <a class="btn btn-primary" role="button" asp-controller="Produto" asp-action="Criar">Adicionar Produto</a>
+    </div>
+
+    <br />
+
+    @if(TempData["Sucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["Sucesso"]
+        </div>
+        
+    }
+    @if (TempData["Falha"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+           @TempData["Falha"]
+        </div>
+    }
+
+    <br />
+   
+
+    <h1 class="display-4">Listagem de Produtos</h1>
+
+    <table class="table" id="table-produtos">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Categoria</th>
+                <th scope="col" class="text-center">Produto</th>
+                <th scope="col" class="text-center">Recipiente</th>
+                <th scope="col" class="text-center">Código-Barra</th>
+                <th scope="col" class="text-center">Data-Cadastrado</th>
+                <th scope="col" class="text-center">Ação</th>
+            </tr>
+        </thead >
+        <tbody class ="table-group-divider">
+            @if (Model != null && Model.Any())
+            {
+                int counter = 1;
+                foreach (Produto produto in Model)
+                {
+                    <tr>
+                        <th scope="row" class="text-center">@counter</th>
+                        <td class="text-center">@produto.Categoria</td>
+                        <td class="text-center">@produto.NomeProduto</td>
+                        <td class="text-center">@produto.Recipiente</td>
+                        <td class="text-center">@produto.CodBarra</td>
+                        <td class="text-center">@Html.DisplayFor(modelItem => produto.DataCadastro)</td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-success" asp-route-id="@produto.Id" asp-controller="Produto" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@produto.Id" asp-controller="Produto" asp-action="ApagarConfirmacao">Apagar</a>
+                                <a role="button" class="btn btn-primary" asp-route-id="@produto.Id" asp-controller="Produto" asp-action="Exibir">Exibir</a>
+                            </div>
+                        </td>
+                    </tr>
+                    counter++;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
